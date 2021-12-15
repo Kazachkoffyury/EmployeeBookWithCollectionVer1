@@ -14,18 +14,24 @@ public class EmployeeServiceimpl implements EmployeeService {
 public EmployeeServiceimpl() {
     employees = new ArrayList<>();
 }
+
     @Override
     public boolean addEmployee(String firstName, String secondName) {
         Employee employee = new Employee(firstName,secondName);
-        return employees.add(employee);
+        if (!employees.contains(employee)) {
+            return employees.add(employee);
+        }
+        return false;
 
     }
 
     @Override
     public  boolean removeEmployee(String firstName, String secondName) {
         Employee employee = new Employee(firstName,secondName);
-        return employees.remove(employee);
-
+        if(employees.contains(employee)) {
+            return employees.remove(employee);
+        }
+        return false;
     }
 
     @Override
